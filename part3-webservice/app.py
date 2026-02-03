@@ -33,8 +33,8 @@ div.stButton > button {
 st.title("TOPSIS Calculator")
 
 uploaded_file = st.file_uploader("File Name", type=["csv","xlsx"])
-weights_input = st.text_input("Weights", placeholder="1,1,1,1")
-impacts_input = st.text_input("Impacts", placeholder="+,+,+,+")
+weights_input = st.text_input("Weights", placeholder="e.g. 1,1,1,1")
+impacts_input = st.text_input("Impacts", placeholder="e.g. +,+,+,+")
 email_input = st.text_input("Email Id", placeholder="example@gmail.com")
 
 # ---------- EMAIL VALIDATION ----------
@@ -128,4 +128,5 @@ if st.button("Submit"):
             buffer = io.StringIO()
             result_df.to_csv(buffer, index=False)
             send_email(email_input, buffer.getvalue().encode())
+
             st.success("Result sent to your email!")
